@@ -1,120 +1,174 @@
-# Ecommerce Pipeline Project
+# E-commerce Analytics Platform
 
-This project is a comprehensive data science pipeline for e-commerce data, including ETL (Extract, Transform, Load), machine learning model training, and dashboard visualization.
+A comprehensive e-commerce data analytics platform built with Streamlit, enabling sales analysis, customer churn prediction, and business performance optimization.
+
+## 🌟 Features
+
+### Analytics Dashboard
+- Real-time KPI visualization
+- Sales trend analysis
+- Seller performance metrics
+- Customer review analysis
+- Data export in CSV/Excel
+
+### Machine Learning Models
+- Customer segmentation (RFM)
+- Churn prediction
+- Delivery time estimation
+- Product recommendations
+- Anomaly detection
+
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/ecommerce-analytics.git
+cd ecommerce-analytics
+```
+
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Launch the application:
+```bash
+streamlit run app/app.py
+```
+
+The application will be available at: `http://localhost:8501`
 
 ## 📁 Project Structure
 
 ```
-ecommerce-pipeline-project/
-│
-├── _config.yml                  # Configuration file for documentation or tools
-├── airflow_dags/                # Airflow DAGs for orchestrating ETL and ML workflows
-├── app/                         # Web application (dashboard) for data and model visualization
-│   ├── app.py                   # Main app script
-│   ├── models/                  # ML models used by the app
-│   ├── style.css                # Stylesheet for the dashboard
-│   └── templates/               # HTML templates for the dashboard
-│       ├── dashboard.html
-│       ├── index.html
-│       └── models.html
-├── dags/                        # Additional Airflow DAGs
-│   └── ecommerce_pipeline_dag.py
-├── dashboard/                   # Standalone dashboard app (alternative or legacy)
-│   └── app.py
-├── data/                        # Data files (not versioned in git)
-├── DATA.md                      # Data documentation
-├── database/                    # Database connection and ORM models
-│   ├── __init__.py
-│   ├── config.py
-│   ├── connection.py
-│   ├── models.py
-│   └── setup.py
-├── docs/                        # Project documentation (Sphinx)
-│   ├── code_viewer.html
-│   ├── conf.py
-│   ├── images/
-│   ├── index.rst
-│   └── Makefile
-├── extract/                     # Data extraction scripts
-│   └── extract.py
-├── Home.py                      # Main entry point or landing page script
-├── index.md                     # Project index in markdown
-├── LICENSE                      # License file
-├── load/                        # Data loading scripts
-├── models/                      # Machine learning models and related code
-├── notebooks/                   # Jupyter notebooks for exploration and analysis
-├── pages/                       # Streamlit or dashboard pages
-│   ├── 1_📊_Modeles.py
-│   └── 2_🎯_Model_Performance.py
-├── README_MULTI_PAGES.md        # Additional README for multi-page apps
-├── README.md                    # (This file)
-├── requirements.txt             # Python dependencies
-├── scripts/                     # Scripts for training ML models
-│   ├── train_all_models_fast.py
-│   ├── train_churn_model.py
-│   ├── train_delivery_model.py
-│   ├── train_price_model_optimized.py
-│   ├── train_price_model.py
-│   └── train_recommendation_model.py
-├── src/                         # Source code (config, database, etc.)
-│   ├── __init__.py
-│   ├── config/
-│   │   ├── __init__.py
-│   │   └── database.py
-│   └── database/
-│       ├── connection.py
-│       └── models.py
-├── tests/                       # Unit and integration tests
-│   └── test_dashboard.py
-├── transform/                   # Data transformation scripts and notebooks
-│   ├── 01_data_loading_and_setup.ipynb
-│   ├── 02_data_cleaning.py
-│   ├── data_description.ipynb
-│   └── transform.py
-├── tree.txt                     # Textual tree view of the project
-└── venv/                        # Virtual environment (should be in .gitignore)
+ecommerce-analytics/
+├── app/
+│   ├── app.py              # Main Streamlit application
+│   └── utils/              # Helper functions and utilities
+├── models/
+│   ├── churn_model.joblib  # Churn prediction model
+│   ├── delivery_model.joblib
+│   ├── recommender_model.joblib
+│   └── anomaly_model.joblib
+├── data/
+│   ├── raw/               # Raw data
+│   └── processed/         # Processed data
+├── tests/                 # Unit tests
+├── requirements.txt       # Python dependencies
+└── README.md             # Documentation
 ```
 
-## 📝 Description of Main Components
+## 🛠️ Technologies Used
 
-- **airflow_dags/** & **dags/**: Define and schedule ETL and ML workflows using Apache Airflow.
-- **app/**: Contains the dashboard web app for visualizing data and model results.
-- **database/** & **src/database/**: Database configuration, connection, and ORM models.
-- **extract/**, **load/**, **transform/**: Scripts for extracting, loading, and transforming data.
-- **models/** & **scripts/**: Machine learning models and training scripts.
-- **notebooks/**: Jupyter notebooks for data exploration and prototyping.
-- **pages/**: Additional dashboard or Streamlit pages.
-- **docs/**: Sphinx documentation for the project.
-- **tests/**: Unit and integration tests.
-- **data/**: Data files (not tracked by git; add to .gitignore).
-- **venv/**: Python virtual environment (add to .gitignore).
+- **Streamlit**: Interactive user interface
+- **Pandas**: Data manipulation and analysis
+- **Plotly**: Interactive visualizations
+- **Scikit-learn**: Machine learning models
+- **Joblib**: Model persistence
 
-## 🚀 Getting Started
+## 📊 Detailed Features
 
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/meriem-amrane/Data-Science-portfolio.git
-   cd Data-Science-portfolio/ecommerce-pipeline-project
-   ```
-2. **Create and activate a virtual environment**
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # (ou venv\Scripts\activate sous Windows)
-   ```
-3. **Install dependencies**
-   ```sh
-   pip install -r requirements.txt
-   ```
+### Dashboard
+- Date range filters for temporal analysis
+- Interactive sales visualizations
+- Product category analysis
+- Seller performance metrics
+- Customer review analysis
 
-## 📊 Features
-- Automated ETL pipeline with Airflow
-- Data cleaning and transformation
-- Machine learning model training and evaluation
-- Interactive dashboard for results visualization
+### Models
+- **RFM Segmentation**: Customer analysis based on recency, frequency, and monetary value
+- **Churn Prediction**: Customer churn probability estimation
+- **Delivery Prediction**: Delivery time estimation
+- **Recommendations**: Personalized product suggestions
+- **Anomaly Detection**: Identification of unusual patterns
 
-## 📄 License
-MIT
+## 🤝 Contributing
 
----
+Contributions are welcome! Feel free to:
+1. Fork the project
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
 
-*For more details, see the documentation in the `docs/` folder.*
+## 📝 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## 👥 Authors
+
+- Your Name - Lead Developer
+
+## 🙏 Acknowledgments
+
+- Streamlit for their excellent framework
+- The open-source community for the libraries used
+
+## 🔧 Development Setup
+
+### Prerequisites
+- Python 3.8+
+- pip (Python package manager)
+- Git
+
+### Environment Setup
+1. Create and activate virtual environment
+2. Install dependencies
+3. Configure environment variables (if needed)
+4. Run the application
+
+### Running Tests
+```bash
+pytest tests/
+```
+
+### Code Style
+- Follow PEP 8 guidelines
+- Use meaningful variable names
+- Add docstrings to functions
+- Write unit tests for new features
+
+## 📈 Performance Optimization
+
+- Caching with `@st.cache_data` and `@st.cache_resource`
+- Efficient data processing with Pandas
+- Optimized model loading
+- Responsive UI design
+
+## 🔍 Monitoring and Logging
+
+- Application logs in `logs/` directory
+- Performance metrics tracking
+- Error handling and reporting
+- User activity monitoring
+
+## 🚀 Deployment
+
+### Local Deployment
+1. Install dependencies
+2. Run with Streamlit
+3. Access via localhost
+
+### Cloud Deployment
+1. Prepare requirements.txt
+2. Configure environment variables
+3. Deploy to cloud platform
+4. Set up monitoring
+
+## 📚 Documentation
+
+- Code documentation in docstrings
+- API documentation
+- User guides
+- Development guidelines
+
+=======
+# portfolio-data-science
+>>>>>>> 5ce0fcd (Initial commit)

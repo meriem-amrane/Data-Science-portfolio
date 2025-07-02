@@ -179,10 +179,8 @@ if df is not None and not df.empty:
 
         # Main content
         st.title("E-commerce Analytics Dashboard")
-
         # Tabs
         tab1, tab2, tab3 = st.tabs(["Business Overview", "Product Analysis", "Customer Insights"])
-
         with tab1:
             st.header("Business Overview")
             
@@ -242,7 +240,7 @@ if df is not None and not df.empty:
                 status_timeline = filtered_df.groupby([
                     pd.to_datetime(filtered_df['order_purchase_timestamp']).dt.date,
                     'order_status'
-                ])['order_id'].count().reset_index()
+                ], observed=True)['order_id'].count().reset_index()
                 
                 fig_status = px.line(
                     status_timeline,
@@ -296,7 +294,7 @@ if df is not None and not df.empty:
                     q=4,
                     labels=['Bronze', 'Silver', 'Gold', 'Platinum']
                 )
-                segment_stats = customer_freq.groupby('segment').agg({
+                segment_stats = customer_freq.groupby('segment', observed=True).agg({
                     'customer_id': 'count',
                     'price': 'mean',
                     'order_id': 'mean'
@@ -399,6 +397,7 @@ if df is not None and not df.empty:
 
         with tab3:
             st.header("Customer Insights")
+            # Customer Metrics
             col1, col2, col3 = st.columns(3)
             
             with col1:
@@ -450,7 +449,7 @@ if df is not None and not df.empty:
                     q=4,
                     labels=['Bronze', 'Silver', 'Gold', 'Platinum']
                 )
-                segment_stats = customer_freq.groupby('segment').agg({
+                segment_stats = customer_freq.groupby('segment', observed=True).agg({
                     'customer_id': 'count',
                     'price': 'mean',
                     'order_id': 'mean'

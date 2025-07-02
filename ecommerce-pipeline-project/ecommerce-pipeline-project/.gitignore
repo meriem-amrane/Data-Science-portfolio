@@ -36,7 +36,7 @@ ENV/
 *.ipynb
 
 # Streamlit
-.streamlit/secrets.toml
+.streamlit/
 
 # Data
 data/raw/
